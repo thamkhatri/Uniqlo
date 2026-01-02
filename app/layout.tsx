@@ -1,13 +1,24 @@
-export default function Navbar() {
-  return (
-    <nav className="flex justify-between p-4 border-b">
-      <h1>Shop</h1>
-      <div className="felx gap-4">
-        <a href="/products">Products</a>
-        <a href="/cart">Cart</a>
-        <a href="/login">Login</a>
+import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
-      </div>
-    </nav>
-  )
+export const metadata = {
+  title: "My Shop",
+  description: "Next.js E-commerce App",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
 }

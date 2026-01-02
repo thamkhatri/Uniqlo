@@ -1,0 +1,24 @@
+# 🔹 PHASE : CHECKOUT + ORDER CREATION (FULL FLOW)
+# We’ll divide this into 6 clear steps:
+# 1️⃣ What checkout actually means
+# 2️⃣ Checkout page (frontend)
+# 3️⃣ Backend checkout API
+# 4️⃣ Payment (Stripe logic)
+# 5️⃣ Order creation in database
+# 6️⃣ Clearing the cart
+
+# 1️⃣ WHAT “CHECKOUT” REALLY IS
+# Checkout is NOT just a button.
+# It is a secure transaction flow:
+# Cart (frontend)
+#    ↓
+# Backend validates prices
+#    ↓
+# Payment provider (Stripe)
+#    ↓
+# Payment confirmation
+#    ↓
+# Create order in DB
+# ⚠️ Rule:
+# 👉 Never trust cart totals from frontend
+# 👉 Backend recalculates everything
