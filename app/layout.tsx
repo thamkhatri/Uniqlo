@@ -3,8 +3,11 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "My Shop",
+  title: "UNIQLO",
   description: "Next.js E-commerce App",
+  icons: {
+    icon: "/favicon-uni.png",
+  },
 };
 
 export default function RootLayout({
