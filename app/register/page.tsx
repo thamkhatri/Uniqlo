@@ -4,28 +4,37 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function RegisterPage() {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleLogin = async () => {
-        const { error } = await supabase.auth.signInWithPassword({
+    const handleRegister = async () => {
+        setLoading(true);
+
+        const { data, error } = await supabase.auth.signUp({
             email,
             password,
         });
 
         if (error) {
             alert(error.message);
+            setLoading(false);
             return;
         }
 
-        router.push("/");
+        // create profile
+        await supabase.from("profiles").insert({
+            id: data.user?.id,
+        });
+
+        router.push("/login");
     };
 
     return (
         <div className="max-w-md mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-4">Login</h1>
+            <h1 className="text-2xl font-bold mb-4">Create Account</h1>
 
             <input
                 className="border p-2 w-full mb-3"
@@ -41,12 +50,12 @@ export default function LoginPage() {
             />
 
             <button
-                onClick={handleLogin}
+                onClick={handleRegister}
                 className="bg-black text-white w-full py-2"
+                disabled={loading}
             >
-                Login
+                {loading ? "Creating..." : "Register"}
             </button>
         </div>
     );
 }
-
