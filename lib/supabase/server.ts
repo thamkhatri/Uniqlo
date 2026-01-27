@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 
@@ -25,3 +25,4 @@ export async function createSupabaseServer() {
         }
     );
 }
+

@@ -14,6 +14,7 @@ export default async function CheckoutPage() {
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold">Checkout</h1>
+            {/* <p>Welcome, {session}</p> */}
             {/* checkout UI here */}
         </div>
     );

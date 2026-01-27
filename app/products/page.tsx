@@ -2,7 +2,7 @@ import { createSupabaseServer } from "@/lib/supabase/server";
 import ProductList from "@/components/product/ProductList";
 
 export default async function ProductsPage() {
-    const supabase = createSupabaseServer();
+    const supabase = await createSupabaseServer();
 
     const { data: products, error } = await supabase.from("products").select("*");
 
